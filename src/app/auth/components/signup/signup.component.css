@@ -1,0 +1,87 @@
+/* signup.component.css */
+.signup-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 5%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #6a20f4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #6413fb;
+  }
+  /* Add this to your existing CSS */
+
+  /* Style for disabled button */
+  button[type="submit"]:disabled {
+    background-color: #a378f3; /* Lighten the blue */
+    cursor: not-allowed; /* Change the cursor to indicate it's not clickable */
+    opacity: 0.7; /* Slightly reduce the opacity for visual feedback */
+  }
+
+  /* Optionally, you could add styles for the enabled button on hover as well */
+  button[type="submit"]:enabled:hover {
+    background-color: #5f0df7; /* Keep this for hover effect */
+  }
+  
+  .links {
+    margin-top: 15px;
+    text-align: center;
+  }
+  
+  .link-button {
+    background: none;
+    border: none;
+    color: #632fc5;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0;
+    font-size: 14px;
+  }
+  
+  .link-button:hover {
+    color: #5113c6;
+    text-decoration: underline;
+  }
+  

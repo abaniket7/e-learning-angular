@@ -1,9 +1,27 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
+import { en_US, provideNzI18n } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { FormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient, withFetch } from '@angular/common/http'; // Import withFetch
+import { NzMessageModule } from 'ng-zorro-antd/message'; // Import the NzMessageModule
+import { RouterModule } from '@angular/router';
+registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration()]
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    importProvidersFrom(RouterModule),
+    provideClientHydration(),
+    provideNzI18n(en_US),
+    importProvidersFrom(FormsModule),
+    importProvidersFrom(NzMessageModule), // Add NzMessageModule here
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch()), // Enable fetch API with withFetch()
+  ]
 };

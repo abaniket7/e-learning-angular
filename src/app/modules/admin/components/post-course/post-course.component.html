@@ -1,0 +1,99 @@
+<div class="mt-12">  
+  <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Loading...">
+    <div class="max-w-4xl mx-auto p-6 mb-12 bg-gradient-to-b from-gray-100 to-white shadow-lg rounded-lg border border-gray-200">
+      <div class="mb-8">
+        <h2 class="text-3xl text-orange-500 font-semibold text-center">Post Course</h2>
+      </div>
+
+      <form [formGroup]="postCourseForm" novalidate>
+        
+        <!-- Course Thumbnail Upload -->
+        <div nz-row class="mb-6">
+          <div nz-col [nzMd]="24" [nzSm]="24" [nzXs]="24">
+            <div class="flex flex-col items-center">
+              <label for="upload_thumbnail" class="upload-label mb-4" *ngIf="imagePreview">
+                <img class="thumbnail w-40 h-40 object-cover rounded-md" [src]="imagePreview" alt="thumbnail" />
+              </label>
+              <input type="file" id="upload_thumbnail" accept="image/x-png,image/gif,image/jpeg" (change)="onFileSelected($event)" class="mb-4" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Name -->
+        <div nz-col nzSpan="24" class="mb-6">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="postCourseForm.get('courseName')?.invalid && postCourseForm.get('courseName')?.touched ? 'Course name is required!' : ''">
+              <input nz-input placeholder="Course Name" formControlName="courseName" class="p-3 border border-gray-400 rounded-md w-full" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <!-- Course Description -->
+        <div nz-col nzSpan="24" class="mb-6">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="postCourseForm.get('courseDescription')?.invalid && postCourseForm.get('courseDescription')?.touched ? 'Course description is required!' : ''">
+              <textarea nz-input maxlength="2000" placeholder="Course Description" formControlName="courseDescription" rows="4" class="p-3 border border-gray-400 rounded-md w-full"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <!-- Course Category -->
+        <div nz-col nzSpan="24" class="mb-6">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="postCourseForm.get('courseCategory')?.invalid && postCourseForm.get('courseCategory')?.touched ? 'Course category is required!' : ''">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Category" formControlName="courseCategory" class="w-full">
+                <nz-option *ngFor="let category of listOfCategories" [nzLabel]="category" [nzValue]="category"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <!-- Course Level -->
+        <div nz-col nzSpan="24" class="mb-6">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="postCourseForm.get('courseLevel')?.invalid && postCourseForm.get('courseLevel')?.touched ? 'Course level is required!' : ''">
+              <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select Level" formControlName="courseLevel" class="w-full">
+                <nz-option *ngFor="let level of listOfLevels" [nzLabel]="level" [nzValue]="level"></nz-option>
+              </nz-select>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <!-- Course Duration -->
+        <div nz-col nzSpan="24" class="mb-6">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="postCourseForm.get('courseDuration')?.invalid && postCourseForm.get('courseDuration')?.touched ? 'Course duration is required!' : ''">
+              <input nz-input type="text" placeholder="Duration (e.g., 10 hours)" formControlName="courseDuration" class="p-3 border border-gray-400 rounded-md w-full" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <!-- Instructor Name -->
+        <div nz-col nzSpan="24" class="mb-6">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="postCourseForm.get('instructorName')?.invalid && postCourseForm.get('instructorName')?.touched ? 'Instructor name is required!' : ''">
+              <input nz-input placeholder="Instructor Name" formControlName="instructorName" class="p-3 border border-gray-400 rounded-md w-full" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <!-- Course Price -->
+        <div nz-col nzSpan="24" class="mb-6">
+          <nz-form-item>
+            <nz-form-control [nzErrorTip]="postCourseForm.get('coursePrice')?.invalid && postCourseForm.get('coursePrice')?.touched ? 'Course price is required!' : ''">
+              <input nz-input type="number" placeholder="Price (in USD)" formControlName="coursePrice" class="p-3 border border-gray-400 rounded-md w-full" />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <!-- Submit Button -->
+        <div nz-col nzSpan="24" class="mb-6 text-center">
+          <button nz-button nzType="primary" (click)="postCourse()" [disabled]="postCourseForm.invalid" class="bg-blue-500 hover:bg-blue-600 text-white rounded-md w-1/2">
+            Post Course
+          </button>
+        </div>
+        
+      </form>
+    </div>
+  </nz-spin>
+</div>

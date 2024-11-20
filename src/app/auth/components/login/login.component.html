@@ -1,0 +1,32 @@
+<div class="login-container">
+  <h2 class="text-orange-500 text-4xl">Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+    <!-- Email Field -->
+    <div class="form-group" [ngClass]="{'has-error': isFieldInvalid('email')}">
+      <label for="email">Email/Username</label>
+      <input type="text" id="email" formControlName="email" name="email" required />
+      <div *ngIf="isFieldInvalid('email')" class="error-message">
+        <small *ngIf="loginForm.get('email')?.hasError('required')">* Email is required</small>
+        <small *ngIf="loginForm.get('email')?.hasError('email')">* Enter a valid email address</small>
+      </div>
+    </div>
+
+    <!-- Password Field -->
+    <div class="form-group" [ngClass]="{'has-error': isFieldInvalid('password')}">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" name="password" required />
+      <div *ngIf="isFieldInvalid('password')" class="error-message">
+        <small *ngIf="loginForm.get('password')?.hasError('required')">* Password is required</small>
+      </div>
+    </div>
+
+    <!-- Login Button -->
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+    <div class="links">
+      <a routerLink="/register" class="link-button">New to our site? Sign up</a> 
+      <!-- | <a routerLink="/forgotpassword" class="link-button">Forgot Password?</a> -->
+    </div>
+  </form>
+</div>

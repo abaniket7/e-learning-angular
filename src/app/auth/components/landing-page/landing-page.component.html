@@ -1,0 +1,63 @@
+<nav
+  *ngIf="!isAdminLoggedIn && !isUserLoggedIn"
+  style="height: 10%"
+  class="bg-white font-normal text-xl flex items-center justify-between border-b-2"
+>
+  <div class="text-center m-4 mt-4 text-black font-bold text-4xl">
+    <h2 class="m-0 pl-7">E-learning</h2>
+  </div>
+  <div class="flex justify-between w-2/5 items-center m-2 mt-3 pr-7">
+    <a routerLink="home" class="mx-2 text-black hover:text-gray-500">Home</a>
+    <a routerLink="register" class="mx-2 text-black hover:text-gray-500"
+      >Registration</a
+    >
+    <a routerLink="login" class="mx-2 text-black hover:text-gray-500">Login</a>
+    <a routerLink="course" class="mx-2 text-black hover:text-gray-500"
+      >Courses</a
+    >
+    <a routerLink="about" class="mx-2 text-black hover:text-gray-500">About</a>
+    <a routerLink="contact" class="mx-2 text-black hover:text-gray-500"
+      >Contact</a
+    >
+  </div>
+</nav>
+
+<nav
+  *ngIf="isAdminLoggedIn"
+  style="height: 10%"
+  class="bg-white font-normal text-xl flex items-center justify-between border-b-2"
+>
+  <div class="text-center m-4 mt-4 text-orange-500 font-bold text-4xl">
+    <h2 class="m-0 pl-7">Admin Panel</h2>
+  </div>
+  <div class="flex justify-between w-2/5 items-center m-2 mt-3 pr-7">
+    <a routerLink="/admin/dashboard" class="mx-2 text-black hover:text-gray-500">Dashboard</a>
+    <a routerLink="/admin/course" class="mx-2 text-black hover:text-gray-500">Post Course</a>
+    <a routerLinkActive="active" (click)="logOut()" class="mx-2 text-black hover:text-gray-500">Logout</a>
+    
+  </div>
+</nav>
+
+<nav
+  *ngIf="isUserLoggedIn"
+  style="height: 10%"
+  class="bg-white font-normal text-xl flex items-center justify-between border-b-2"
+>
+  <div class="text-center m-4 mt-4 text-black font-bold text-4xl">
+    <h2 class="m-0 pl-7">E-learning</h2>
+  </div>
+  <div class="flex justify-between w-2/5 items-center m-2 mt-3 pr-7">
+    <a routerLink="/user/dashboard" class="mx-2 text-black hover:text-gray-500">Home</a>
+    <a routerLink="course" class="mx-2 text-black hover:text-gray-500"
+      >Courses</a
+    >
+    <a routerLink="about" class="mx-2 text-black hover:text-gray-500">About</a>
+    <a routerLink="contact" class="mx-2 text-black hover:text-gray-500"
+      >Contact</a
+    >
+    <a routerLinkActive="active" (click)="logOut()" class="mx-2 text-black hover:text-gray-500">Logout</a>
+  </div>
+</nav>
+<div class="CONTAINER">
+  <router-outlet></router-outlet>
+</div>

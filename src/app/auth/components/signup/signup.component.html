@@ -1,0 +1,87 @@
+<div class="signup-container">
+  <form [formGroup]="signupForm" (ngSubmit)="register()">
+    <h2 class="text-orange-500 text-4xl">Sign Up</h2>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="text-danger">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Full Name -->
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+        placeholder="Enter your full name"
+      />
+      <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+        <small class="text-danger">Name is required.</small>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+        placeholder="Enter your email"
+      />
+      <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+        <small class="text-danger">A valid email is required.</small>
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Enter your password"
+      />
+      <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+        <small *ngIf="signupForm.get('password')?.errors?.['minlength']" class="text-danger">
+          Password must be at least 8 characters.
+        </small>
+        <small *ngIf="signupForm.get('password')?.errors?.['maxlength']" class="text-danger">
+          Password cannot exceed 20 characters.
+        </small>
+        <small *ngIf="signupForm.get('password')?.errors?.['pattern']" class="text-danger">
+          Password must include an uppercase letter, a special character, and a number.
+        </small>
+      </div>
+    </div>
+    
+
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <label for="checkPassword">Confirm Password</label>
+      <input
+        type="password"
+        id="checkPassword"
+        formControlName="checkPassword"
+        class="form-control"
+        placeholder="Confirm your password"
+      />
+      <div *ngIf="signupForm.get('checkPassword')?.invalid && signupForm.get('checkPassword')?.touched">
+        <small class="text-danger">Passwords must match.</small>
+      </div>
+    </div>
+
+    <!-- Sign Up Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">Sign Up</button>
+
+    <!-- Navigation Links -->
+    <div class="links">
+      <button type="button" class="link-button" (click)="navigateToLogin()">Already a user? Login</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,26 @@
+/* Basic styling for the navbar */
+nav {
+  background-color: #817d7d;
+  padding: 1em;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 1em;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
